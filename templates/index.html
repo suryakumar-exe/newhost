@@ -1,0 +1,109 @@
+{% load static %}
+<html>
+<head>
+
+
+	<title>Quiz Application</title>
+	<script>
+
+    function submitAnswers(answers){
+
+	var total = answers.length;
+	var score = 0;
+	var choice = []
+
+
+	for(var i = 1; i <= total; i++){
+
+		choice[i] = document.forms["quizForm"]["q"+i].value;
+	}
+
+
+	for(i = 1; i <= total; i++){
+		if(choice[i] == null || choice[i] == ''){
+			alert('you missed question ' + i);
+			return false;
+		}
+	}
+
+	for(i = 1; i <= total; i++){
+		if(choice[i] == answers[i - 1]){
+			score++;
+		}
+	}
+
+	//Display Result
+	var results = document.getElementById('results');
+
+	alert("You scored " + score + " out of " + total);
+	if(2*score >= total){
+	results.innerHTML = "<h3>Congratulations, You scored  <span>" + score + "</span> out of <span>" + total + "</span></h3>"
+
+	}
+	else{
+	results.innerHTML = "<h3>Better Luck Next Time, You scored <span>" + score + "</span> out of <span>" + total + "</span></h3>"
+	}
+
+
+	return false;
+	window.location.replace("thanks.html")
+}
+
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#b1").click(function(){
+        $(".rb").show();
+        $(".rb").attr("disabled",true);
+
+
+    });
+    });
+</script>
+
+</head>
+<body>
+<div class="container">
+    <h1 class="text-danger mt-3">Python Assessment Test For Beginners</h1>
+    <h3>Take 50% Mark to Clear the Test</h3>
+    <hr>
+        <section>
+			<div id = "results"></div>
+    <form name = "quizForm" onsubmit = "return submitAnswers(answers = [{% for q in exam %}'{{ q.Corrans }}',{% endfor %}])">
+        {% for i in  exam %}
+        <table>
+            <tr>
+                <td class="text-primary">{{i.id}} ) {{i.Question}} ?</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = q{{i.id}} id="Option1" value="{{i.Option1}}"> {{i.Option1}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = q{{i.id}} id="Option2" value="{{i.Option2}}"> {{i.Option2}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = q{{i.id}} id="Option3" value="{{i.Option3}}"> {{i.Option3}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = q{{i.id}} id="Option4" value="{{i.Option4}}"> {{i.Option4}}</td>
+            </tr>
+
+            <tr>
+                <td><label id="corans" class= "rb" style="display:none ; color : green"><b>Correct Answer :{{i.Corrans}}</b></label></td>
+            </tr>
+
+        </table>
+<hr>
+
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Submit Answer" id="b1">
+    </form>
+            	</section>
+        <br>
+</div>
+</body>
+</html>
