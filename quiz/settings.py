@@ -27,7 +27,7 @@ SECRET_KEY = '$$o(7jz62rqe69kfrx)usnm7!^%-7u$j#)p3&46)td%5!$mwa$'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'test-quiz1.herokuapp.com',
+'otakshinequiz.herokuapp.com',
 ]
 
 
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'quiz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'da23n9p8d8b80r',
-        'USER': 'fewyfkqspmhyfg',
-        'PASSWORD': 'e06a71e1e40d9e3796cf159faadd674da3b43f092c528f9f9f975e089dea1c2e',
-        'HOST': 'ec2-52-72-190-41.compute-1.amazonaws.com',
+        'NAME': 'd53umqomfpvuu5',
+        'USER': 'xbmcxtnqysvvmb',
+        'PASSWORD': 'ee353e769b5d993287021d6a938ed6a437e131b3e6be57ae7726328e0f07101a',
+        'HOST': 'ec2-18-211-97-89.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
