@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$$o(7jz62rqe69kfrx)usnm7!^%-7u$j#)p3&46)td%5!$mwa$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
 'test-quiz1.herokuapp.com',
